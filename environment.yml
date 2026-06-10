@@ -1,0 +1,11 @@
+name: ai6g
+channels:
+  - defaults
+  - pytorch
+dependencies:
+  - python>=3.8
+  - numpy>=1.21
+  - pytorch>=1.9
+  - matplotlib>=3.4
+  - pip:
+    - pytest>=7.0

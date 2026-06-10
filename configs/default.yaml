@@ -1,0 +1,15 @@
+# Default experiment configuration
+num_users: 50
+num_rbs: 10
+epochs: 300
+lr: 0.001
+weight_decay: 0.0001
+batch_size: 128
+train_scenarios: 1000
+val_scenarios: 200
+patience: 30
+model_type: per_rb_deepsets
+model_size: medium
+teacher: max_channel
+seeds: [0, 1, 2, 3, 4]
+results_dir: results

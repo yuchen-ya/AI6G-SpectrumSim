@@ -1,0 +1,11 @@
+# PerRBDeepSets with DemandAwarePF teacher
+model_type: per_rb_deepsets
+teacher: demandaware_pf
+epochs: 300
+lr: 0.001
+weight_decay: 0.0001
+lambda_rank: 0.1
+pf_lambda_demand: 1.0
+pf_beta: 0.5
+seeds: [0, 1, 2, 3, 4]
+results_dir: results/demandaware_pf

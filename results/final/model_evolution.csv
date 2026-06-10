@@ -1,0 +1,6 @@
+model,total_throughput_million,params,notes
+Original MLP v1,37.56,10406,Initial MLP
+Scoring MLP v2,37.2,436481,Per-user scoring
+User-level DeepSets v3,37.7,630017,Global context
+PerRBDeepSets v4,43.41,405249,Per-user-per-RB scoring
+Oracle Max-Channel,43.54,0,Heuristic oracle

@@ -1,0 +1,9 @@
+# PerRBDeepSets with Max-Channel teacher (best configuration)
+model_type: per_rb_deepsets
+teacher: max_channel
+epochs: 300
+lr: 0.001
+weight_decay: 0.0001
+lambda_rank: 0.1
+seeds: [0, 1, 2, 3, 4]
+results_dir: results/max_channel

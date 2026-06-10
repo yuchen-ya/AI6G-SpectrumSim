@@ -1,5 +1,7 @@
 # AI6G-SpectrumSim
 
+[中文文档](README.zh-CN.md)
+
 A lightweight AI-native 6G spectrum/resource allocation simulation framework with **PerRBDeepSets** — a neural scheduler that learns per-user-per-RB scoring from heuristic teachers.
 
 ## Motivation

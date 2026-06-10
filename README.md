@@ -21,7 +21,7 @@ Rather than treating scheduling as a monolithic optimization problem, PerRBDeepS
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/AI6G-SpectrumSim.git
+git clone https://github.com/yuchen-ya/AI6G-SpectrumSim.git
 cd AI6G-SpectrumSim
 
 # Install dependencies (Python >= 3.8 recommended)
@@ -61,16 +61,18 @@ python main.py --model_type per_rb_deepsets --teacher max_channel --epochs 300 -
 
 ### Expected Results
 
-| Algorithm | Total Throughput | Served-User Fairness | All-User Fairness | Demand Satisfaction |
-|-----------|-----------------|---------------------|-------------------|-------------------|
-| Random | 37.10M ± 0.20M | 0.930 | — | 0.141 |
-| **Max-Channel (oracle)** | **43.54M ± 0.91M** | 0.749 | — | 0.030 |
-| Greedy | 38.25M ± 0.52M | 0.999 | — | 0.353 |
-| WeightedGreedy | 37.61M ± 0.42M | 0.811 | — | 0.081 |
-| DemandAwarePF | 37.84M ± 0.91M | 0.829 | — | 0.075 |
-| **PerRBDeepSets** | **43.41M ± 0.95M** | **1.000** | — | 0.017 |
+| Algorithm            | Total Throughput | Served-User Fairness | All-User Fairness | Demand Satisfaction |
+| -------------------- | ---------------: | -------------------: | ----------------: | ------------------: |
+| Random               |   37.10M ± 0.20M |                0.930 |                 — |               0.141 |
+| **Max-Channel (oracle)** | **43.54M ± 0.91M** |            **0.749** |                 — |             **0.030** |
+| Greedy               |   38.25M ± 0.52M |                0.999 |                 — |               0.353 |
+| WeightedGreedy       |   37.61M ± 0.42M |                0.811 |                 — |               0.081 |
+| DemandAwarePF        |   37.84M ± 0.91M |                0.829 |                 — |               0.075 |
+| **PerRBDeepSets**    | **43.41M ± 0.95M** |              **1.000** |               — |             **0.017** |
 
 > **Note**: "Served-User Fairness" measures Jain's index among users who receive at least one RB. "All-User Fairness" measures it over all users (unserved = 0 throughput). See [docs/metrics.md](docs/metrics.md) for details.
+
+> All-User Fairness is documented in `docs/metrics.md` but not included in the pre-computed reference CSVs yet. The reported fairness values are served-user Jain fairness.
 
 PerRBDeepSets predicts a per-user-per-RB score matrix and assigns each resource block independently. With only 405K parameters, it reaches 43.41M ± 0.95M total throughput under Max-Channel supervision, which is within 0.3% of the oracle Max-Channel baseline. Compared with the previous user-level DeepSets model, PerRBDeepSets improves throughput by about 15.1%, demonstrating that matching the neural architecture to the resource-block-level scheduling structure is more important than simply increasing parameter count.
 
@@ -202,7 +204,7 @@ AI6G-SpectrumSim/
 
 If you use this repository, please cite it as:
 
-> AI6G-SpectrumSim: A lightweight AI-native 6G spectrum allocation simulation with PerRBDeepSets. https://github.com/your-username/AI6G-SpectrumSim
+> AI6G-SpectrumSim: A lightweight AI-native 6G spectrum allocation simulation with PerRBDeepSets. https://github.com/yuchen-ya/AI6G-SpectrumSim
 
 ## License
 

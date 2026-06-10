@@ -23,7 +23,7 @@ PerRBDeepSets 将调度问题分解为逐资源块（per-RB）的分配决策，
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/AI6G-SpectrumSim.git
+git clone https://github.com/yuchen-ya/AI6G-SpectrumSim.git
 cd AI6G-SpectrumSim
 
 # 安装依赖（推荐 Python >= 3.8）
@@ -63,16 +63,18 @@ python main.py --model_type per_rb_deepsets --teacher max_channel --epochs 300 -
 
 ### 预期结果
 
-| 算法 | 总吞吐量 | 被服务用户公平性 | 全部用户公平性 | 需求满足率 |
-|------|---------|----------------|--------------|----------|
-| Random | 37.10M ± 0.20M | 0.930 | — | 0.141 |
-| **Max-Channel（oracle）** | **43.54M ± 0.91M** | 0.749 | — | 0.030 |
-| Greedy | 38.25M ± 0.52M | 0.999 | — | 0.353 |
-| WeightedGreedy | 37.61M ± 0.42M | 0.811 | — | 0.081 |
-| DemandAwarePF | 37.84M ± 0.91M | 0.829 | — | 0.075 |
-| **PerRBDeepSets** | **43.41M ± 0.95M** | **1.000** | — | 0.017 |
+| 算法                  |           总吞吐量 | 被服务用户公平性 | 全部用户公平性 | 需求满足率 |
+| ------------------- | -------------: | -------: | ------: | ----: |
+| Random              | 37.10M ± 0.20M |    0.930 |       — | 0.141 |
+| **Max-Channel（oracle）** | **43.54M ± 0.91M** | **0.749** |       — | **0.030** |
+| Greedy              | 38.25M ± 0.52M |    0.999 |       — | 0.353 |
+| WeightedGreedy      | 37.61M ± 0.42M |    0.811 |       — | 0.081 |
+| DemandAwarePF       | 37.84M ± 0.91M |    0.829 |       — | 0.075 |
+| **PerRBDeepSets**   | **43.41M ± 0.95M** | **1.000** |       — | **0.017** |
 
 > **注意**："被服务用户公平性"仅统计获得至少一个 RB 的用户，"全部用户公平性"则将未服务用户的吞吐量记为 0 后在所有用户上计算。详见 [docs/metrics.md](docs/metrics.md)。
+
+> 全部用户公平性已在 `docs/metrics.md` 中定义，但当前预计算参考 CSV 尚未包含该列。表中报告的公平性为被服务用户 Jain 公平性。
 
 PerRBDeepSets 对每个"用户—资源块"组合输出独立评分矩阵，并逐资源块完成分配。在 Max-Channel teacher 监督下，该模型仅使用 405K 参数即可达到 43.41M ± 0.95M 的总吞吐量，距离 oracle Max-Channel 的 43.54M 仅相差约 0.3%。相比旧版用户级 DeepSets 的 37.7M，吞吐量提升约 15.1%。这说明，在智能资源调度任务中，合理匹配问题结构的网络设计比单纯增加模型参数更重要。
 
@@ -218,7 +220,7 @@ AI6G-SpectrumSim/
 
 如果您使用了本仓库，请引用：
 
-> AI6G-SpectrumSim: A lightweight AI-native 6G spectrum allocation simulation with PerRBDeepSets. https://github.com/your-username/AI6G-SpectrumSim
+> AI6G-SpectrumSim: A lightweight AI-native 6G spectrum allocation simulation with PerRBDeepSets. https://github.com/yuchen-ya/AI6G-SpectrumSim
 
 ## 许可证
 
